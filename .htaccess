@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+    RewriteEngine on
+
+    <Files env.php>
+        Order allow,deny
+        Deny from all
+    </Files>
+
+    <Files *.log>
+        Order allow,deny
+        Deny from all
+    </Files>
+
+    RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ public/$1
+</IfModule>
+
+# PHP error handling for production servers
+
+# disable display of startup errors
+php_flag display_startup_errors off
+
+# disable display of all other errors
+php_flag display_errors off
+
+# disable html markup of errors
+php_flag html_errors off
+
+# enable logging of errors
+php_flag log_errors on
+
