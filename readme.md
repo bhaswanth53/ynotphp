@@ -1,3 +1,3 @@
 # YNOTPHP
 
-New Locus Version **1.0**
+YNOTPHP Lightweight PHP Framework Version **1.0**
