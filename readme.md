@@ -1,3 +1,3 @@
-# Locus
+# YNOTPHP
 
-New Locus Version **1.1.0**
+New Locus Version **1.0**
