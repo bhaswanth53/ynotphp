@@ -7,9 +7,17 @@
         public $post;
         public $get;
         public $files;
-        public function __construct($post)
+        public function __construct()
         {
-            $this->post = $post;
+            if(isset($_POST))
+            {
+                $this->post = $_GET;
+            }
+
+            if(isset($_GET))
+            {
+                $this->get = $_GET;
+            }
         }
 
         public function input($string)
@@ -19,7 +27,7 @@
 
         public function get($string)
         {
-            return $this->post[$string];
+            return $this->get[$string];
         }
 
         public function secure($string)
