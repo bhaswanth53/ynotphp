@@ -27,7 +27,7 @@
 
         public function hash($password)
         {
-            $password = password_hash($password, PASSWORD_DEFAULT);
+            $password = password_hash($password, PASSWORD_BCRYPT);
             return $password;
         }
 
