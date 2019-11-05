@@ -1,11 +1,13 @@
 {
-    "name": "bhaswanth53/locus",
+    "name": "bhaswanth53/ynotphp",
     "version": "1.1.0",
     "type": "project",
-    "description": "The Locus Framework Version 1.1.0.",
+    "description": "The YNOTPHP Framework Version 1.0",
     "keywords": [
         "framework",
-        "locus"
+        "ynotphp",
+        "php framework",
+        "lightweight php framework"
     ],
     "require": {
         "altorouter/altorouter": "1.1.0",
@@ -15,7 +17,8 @@
     "autoload": {
 		"psr-4": {
             "Controllers\\": "app/Controllers/",
-            "Models\\": "app/Models"
+            "Models\\": "app/Models",
+            "Facades\\": "app/Facades/"
         }
     },
     "minimum-stability": "dev",
