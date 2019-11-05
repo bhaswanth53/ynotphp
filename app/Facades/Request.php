@@ -5,8 +5,8 @@
     class Request
     {
         public $post;
+        public $ajax;
         public $get;
-        public $files;
         public function __construct()
         {
             if(isset($_POST))
@@ -18,6 +18,10 @@
             {
                 $this->get = $_GET;
             }
+
+            $body = file_get_contents("php://input");
+            $body = json_decode($body, true);
+            $this->ajax = $body;
         }
 
         public function input($string)
@@ -30,7 +34,12 @@
             return $this->get[$string];
         }
 
-        public function secure($string)
+        public function ajax($string)
+        {
+            return $this->ajax[$string];
+        }
+
+        public function secure_input($string)
         {
             $data = $this->post[$string];
             $data = trim($data);
@@ -39,23 +48,21 @@
             return $data;
         }
 
-        public function hash($password)
+        public function secure_get($string)
         {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            return $password;
+            $data = $this->get[$string];
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
 
-        public function verify_hash($password, $hash)
+        public function secure_ajax($string)
         {
-            return password_verify($password, $hash);
-        }
-
-        public function isDelete()
-        {
-            if(isset($this->post['DELETE']) && !empty($this->post['DELETE']))
-            {
-                return true;
-            }
-            return false;
+            $data = $this->ajax[$string];
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
     }

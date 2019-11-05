@@ -6,9 +6,12 @@
     {
         public $files;
 
-        public function __construct($files)
+        public function __construct()
         {
-            $this->files = $files;
+            if(isset($_FILES))
+            {
+                $this->files = $_FILES;
+            }
         }
 
         public function get($file)
