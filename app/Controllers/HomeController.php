@@ -5,6 +5,7 @@
     {
         public function home()
         {
+            // make_flash_array('data', array("email" => "No email data", "mobile" => "No mobile data"));
             return $this->render("home");
         }
 

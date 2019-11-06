@@ -159,6 +159,13 @@
         return;
     }
 
+    function make_flash_array($type, $array)
+    {
+        $array = json_encode($array);
+        $_SESSION[$type] = $array;
+        return;
+    }
+
     function get_flash($type, $html)
     {
         if(isset($_SESSION[$type]) && !empty($_SESSION[$type]))
@@ -167,6 +174,24 @@
             unset($_SESSION[$type]);
             echo $html;
             return true;
+        }
+        return false;
+    }
+
+    function get_flash_array($type, $html)
+    {
+        if(isset($_SESSION[$type]) && !empty($_SESSION[$type]))
+        {
+            $data = json_decode($_SESSION[$type], true);
+            unset($_SESSION[$type]);
+            if(isset($data) && is_array($data) && count($data) > 0)
+            {
+                foreach($data as $key => $item)
+                {
+                    echo str_replace("@flash", $item, $html);
+                }
+                return true;
+            }
         }
         return false;
     }

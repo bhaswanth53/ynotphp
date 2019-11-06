@@ -34,12 +34,4 @@
             ob_start();
             header("Location: ".$url);
         }
-
-        public function with($type, $message="")
-        {
-            if(isset($message) && !empty($message))
-            {
-                make_flash($type, $message);
-            }
-        }
     }
