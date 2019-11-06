@@ -8,12 +8,12 @@
             return $this->render("home");
         }
 
-        public function about($args)
+        public function about($id, $kd, $nt)
         {
             $name = "Bhaswanth";
             $study = "10";
             $data = array('args' => $args, "name" => $name, "study" => $study);
-            return $this->render("about", $args);
+            return $this->render("about", compact('id', 'kd', 'nt'));
         }
 
         public function test()

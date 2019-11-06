@@ -1,3 +1,1 @@
-<h1>This is from homepage</h1>
-
-<?= db("DB_HOST") ?>
+<h1>Home Page</h1>

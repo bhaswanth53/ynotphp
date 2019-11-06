@@ -1,3 +1,13 @@
-<h1>This is from about page</h1>
+<?php
+    use Facades\Crypt;
 
-<?php print_r($args); ?>
+    $enc = Crypt::encrypt("This is the plain text");
+    echo $enc;
+    echo "<br><br>";
+    echo Crypt::decrypt($enc);
+
+    echo $id;
+    echo $kd;
+    echo $nt;
+
+?>

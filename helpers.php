@@ -23,6 +23,13 @@
         return $database;
     }
 
+    function menv()
+    {
+        global $config;
+        $database = include("config/" . $config['APP_MODE'] . "/env.php");
+        return $database;
+    }
+
     $database = database();
 
     function env($string)
@@ -43,6 +50,14 @@
     {
         global $mail;
         return $mail[$string];
+    }
+
+    $menv = menv();
+
+    function modeenv($string)
+    {
+        global $menv;
+        return $menv[$string];
     }
 
     /* Asset & URL Utilities */
