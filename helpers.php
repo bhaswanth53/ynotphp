@@ -239,11 +239,26 @@
     }
 
     /* Data Utilities */
-    function any($first, $second)
+    function store_data($data)
     {
-        if(isset($first) && !empty($first))
+        if(isset($data) && is_array($data) && count($data) > 0)
         {
-            return $first;
+            foreach($data as $key => $value)
+            {
+                session($key, $value);
+            }
+            return true;
         }
-        return $second;
+        return false;
+    }
+
+    function old($name)
+    {
+        if(session_exists($name))
+        {
+            $value = get_session($name);
+            unset_session($name);
+            return $value;
+        }
+        return false;
     }

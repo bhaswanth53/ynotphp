@@ -11,7 +11,7 @@
         {
             if(isset($_POST))
             {
-                $this->post = $_GET;
+                $this->post = $_POST;
             }
 
             if(isset($_GET))
@@ -64,5 +64,56 @@
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             return $data;
+        }
+
+        public function password_check($password)
+        {
+            $pattern = ' ^.*(?=.{7,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$ ';
+            if(strlen($password) < 10)
+            {
+                return false;
+            }
+
+            if(strlen($password) > 32)
+            {
+                return false;
+            }
+
+            if(!preg_match($pattern, $password))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public function hash($password)
+        {
+            $password = password_hash($password, PASSWORD_BCRYPT);
+            return $password;
+        }
+
+        public function verify_hash($password, $hash)
+        {
+            return password_verify($password, $hash);
+        }
+
+        public function all($method)
+        {
+            if($method == 'post')
+            {
+                return $this->post;
+            } 
+            else if($method == 'get')
+            {
+                return $this->get;
+            }
+            else if($method == 'ajax')
+            {
+                return $this->ajax;
+            }
+            else {
+                return false;
+            }
         }
     }
