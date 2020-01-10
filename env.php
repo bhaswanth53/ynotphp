@@ -10,7 +10,7 @@
         /*  
             The path of the application if the application is not hosted from Root folder of the domain
         */
-        "APP_PATH" => "/projects/test/ynotphp",
+        "APP_PATH" => "/ynotphp",
 
         /*
             App Key
