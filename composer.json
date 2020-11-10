@@ -1,7 +1,9 @@
 {
     "name": "bhaswanth53/ynotphp",
-    "version": "1.1.0",
+    "version": "1.0",
+    "homepage": "http://bhaswanth.com/",
     "type": "project",
+    "license": "MIT",
     "description": "The YNOTPHP Framework Version 1.0",
     "keywords": [
         "framework",
@@ -9,6 +11,17 @@
         "php framework",
         "lightweight php framework"
     ],
+    "authors": [
+        {
+            "name": "Bhaswanth Chiruthanuru",
+            "homepage": "https://github.com/bhaswanth53/ynotphp"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "require": {
         "altorouter/altorouter": "1.1.0",
         "phpmailer/phpmailer": "^6.1",
