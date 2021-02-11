@@ -1,10 +1,10 @@
 {
     "name": "bhaswanth53/ynotphp",
-    "version": "1.0",
+    "version": "2.0",
     "homepage": "http://bhaswanth.com/",
     "type": "project",
     "license": "MIT",
-    "description": "The YNOTPHP Framework Version 1.0",
+    "description": "The YNOTPHP Framework Version 2.0",
     "keywords": [
         "framework",
         "ynotphp",
@@ -24,14 +24,15 @@
     },
     "require": {
         "altorouter/altorouter": "1.1.0",
-        "phpmailer/phpmailer": "^6.1",
-        "defuse/php-encryption": "^2.2"
+        "defuse/php-encryption": "^2.2",
+        "phpmailer/phpmailer": "^6.1"
     },
     "autoload": {
 		"psr-4": {
             "Controllers\\": "app/Controllers/",
             "Models\\": "app/Models",
-            "Facades\\": "app/Facades/"
+            "Facades\\": "app/Facades/",
+            "Bucket\\" : "core/Bucket/"
         }
     },
     "minimum-stability": "stable",
