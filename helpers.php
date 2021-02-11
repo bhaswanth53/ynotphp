@@ -72,7 +72,11 @@
     {
         global $config;
         $path = $_SERVER['REQUEST_URI'];
-        $string = str_replace($config['APP_PATH']."/", "", $path);
+        if($config['APP_PATH'] !== "") {
+            $string = str_replace($config['APP_PATH']."/", "", $path);
+        } else {
+            $string = substr($path, 1);
+        }
         return $string;
     }
 
@@ -86,7 +90,7 @@
         return false;
     }
 
-    function url($string = "")
+    function path($string = "")
     {
         global $config;
         if(!empty($string))
@@ -100,10 +104,26 @@
         return $url;
     }
 
-    function get_url($string)
+    function url($url)
     {
-        $url = "//".$_SERVER['SERVER_NAME'].url($string);
+        // $enurl = env("APP_URL");
+        $enurl = server();
+        $url = $enurl . "/" . $url;
         return $url;
+    }
+
+    function server()
+    {
+        $host = $_SERVER['HTTP_HOST'];
+        $proto = "http";
+        if(isset($_SERVER['HTTP_X_ORIGINAL_HOST']) && !empty($_SERVER['HTTP_X_ORIGINAL_HOST'])) {
+            $host = $_SERVER['HTTP_X_ORIGINAL_HOST'];
+        }
+        if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && !empty($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+            $proto = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+        }
+        $host = $proto . "://" . $host;
+        return $host;
     }
 
     /* Storage Utilities */
@@ -144,7 +164,7 @@
     {
         $string = str_replace(".", "/", $string);
         $string = $string.".php";
-        $path = "../views/".$string;
+        $path = "../resources/views/".$string;
         ob_start();
         include($path);
         $var=ob_get_contents(); 
@@ -236,6 +256,14 @@
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    // Random from given array
+    function rand_array($array)
+    {
+        $k = array_rand($array);
+        $v = $array[$k];
+        return $v;
     }
 
     /* Data Utilities */

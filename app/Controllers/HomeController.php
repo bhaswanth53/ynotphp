@@ -7,4 +7,9 @@
         {
             return $this->render("home");
         }
+
+        public function about()
+        {
+            echo "This is about page";
+        }
     }

@@ -4,6 +4,8 @@
 
     session_start();
 
+    use Bucket\Router;
+
     $error_path = "../logs/".date('Y-m-d').".log";
     // $error_path = "../PHP_errors.log";
 
@@ -18,7 +20,16 @@
 
     $router->setBasePath($path);
 
+    $rtr = new Router();
     include("../web.php");
+    $routes = $rtr->fetch();
+
+    foreach($routes as $route)
+    {
+        $router->map($route['method'], $route['path'], $route['action'], $route['name']);
+    }
+
+    // include("../web.php");
 
     $router->addMatchTypes(array(
         "string" => '[A-Za-z0-9_~\-!@#=\$%\^&\*\(\)]?'
