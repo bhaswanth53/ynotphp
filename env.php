@@ -15,7 +15,7 @@
         /*
             App Key
         */
-        "APP_KEY" => "",
+        "APP_KEY" => "def00000b872a54494d051114f5ed5fda993c890f5cda3f3fe8cc755b69c68d7cbd428572f072f2e652cd49660a8ed4289c12df4593944e3f4745e179705fd6af57ccd7c",
 
         /*
             App Debug
